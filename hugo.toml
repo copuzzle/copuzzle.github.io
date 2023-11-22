@@ -11,7 +11,7 @@ theme = "paper"
 
   # header social icons
   github = 'copuzzle'                 # github.com/YOUR_GITHUB_ID
-  #rss = true                                # show rss icon
+  rss = true                                # show rss icon
   about = "/about"
   # home page profile
   # avatar = 'https://avatars.githubusercontent.com/u/2509640?v=4'                 # gravatar email or image url
@@ -36,8 +36,8 @@ theme = "paper"
   categoryId = 'DIC_kwDOA5Df9c4CbJZi'
   mapping = 'pathname'
   theme = 'light'
-  lang = 'en-us'
-#  lang = 'zh-CN'
+  lang = 'en'
+
 
 [menu]
 
