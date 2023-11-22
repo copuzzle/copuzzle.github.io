@@ -27,6 +27,7 @@ theme = "paper"
   math = true                               # enable KaTeX math typesetting globally
   comments = true
 
+googleAnalytics = 'G-YNE1Q958KY'
 
 # giscus
 [params.giscus]
@@ -37,6 +38,7 @@ theme = "paper"
   mapping = 'pathname'
   theme = 'light'
   lang = 'en'
+
 
 
 [menu]
