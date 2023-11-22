@@ -27,7 +27,10 @@ theme = "paper"
   math = true                               # enable KaTeX math typesetting globally
   comments = true
 
-googleAnalytics = 'G-YNE1Q958KY'
+[services]
+  [services.googleAnalytics]
+    ID = 'G-YNE1Q958KY'
+#googleAnalytics = 'G-YNE1Q958KY'
 
 # giscus
 [params.giscus]
