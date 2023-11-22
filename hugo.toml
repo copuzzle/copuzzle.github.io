@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-##;;languageCode = 'zh-cn'
+## languageCode = 'zh-CN'
 title = '无聊的牛顿'
 theme = "paper"
 
@@ -14,8 +14,8 @@ theme = "paper"
   #rss = true                                # show rss icon
   about = "/about"
   # home page profile
-  avatar = 'https://avatars.githubusercontent.com/u/2509640?v=4'                 # gravatar email or image url
-  name = 'Tsai Ming'
+  # avatar = 'https://avatars.githubusercontent.com/u/2509640?v=4'                 # gravatar email or image url
+  # name = 'Tsai Ming'
   bio = 'To be or not to be, that is the question.'
 
   # misc
@@ -23,22 +23,34 @@ theme = "paper"
   disablePostNavigation = true              # disable post navigation
   monoDarkIcon = true                       # show monochrome dark mode icon
   #gravatarCdn = 'GRAVATAR_CDN_LINK'         # e.g. 'https://cdn.v2ex.com/gravatar/'
-  graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
+  #graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
   math = true                               # enable KaTeX math typesetting globally
   comments = true
+
+
+# giscus
+[params.giscus]
+  repo = "copuzzle/copuzzle.github.io"                 # see https://giscus.app for more details
+  repoId = 'MDEwOlJlcG9zaXRvcnk1OTgyNjE2NQ=='
+  category = 'General'
+  categoryId = 'DIC_kwDOA5Df9c4CbJZi'
+  mapping = 'pathname'
+  theme = 'light'
+  lang = 'en-us'
+#  lang = 'zh-CN'
 
 [menu]
 
   [[menu.main]]
     identifier = "about"
     name = "About"
-    url = "/about/"
+    url = "/about"
     weight = 10
-#  [[menu.main]]
-#    identifier = "contact"
-#    name = "Contact"
-#    url = "/contact/"
-#    weight = 10
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact"
+    weight = 10
 
 [taxonomies]
 category = "categories"
