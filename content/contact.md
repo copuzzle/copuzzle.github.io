@@ -6,6 +6,5 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "copuzzle"
 +++
 
-
+- copouzzle@gmail.com
 - [boringnewton.top](https://boringnewton.top)
-- [github.com/copuzzle](https://github.com/copuzzle)
