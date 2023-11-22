@@ -1,4 +1,45 @@
 baseURL = 'https://example.org/'
-languageCode = 'zh-cn'
+languageCode = 'en-us'
+##;;languageCode = 'zh-cn'
 title = '无聊的牛顿'
 theme = "paper"
+
+
+[params]
+  # color style
+  color = 'linen'                           # linen, wheat, gray, light
+
+  # header social icons
+  github = 'copuzzle'                 # github.com/YOUR_GITHUB_ID
+  #rss = true                                # show rss icon
+  about = "/about"
+  # home page profile
+  avatar = 'https://avatars.githubusercontent.com/u/2509640?v=4'                 # gravatar email or image url
+  name = 'Tsai Ming'
+  bio = 'To be or not to be, that is the question.'
+
+  # misc
+  disableHLJS = true                        # disable highlight.js
+  disablePostNavigation = true              # disable post navigation
+  monoDarkIcon = true                       # show monochrome dark mode icon
+  #gravatarCdn = 'GRAVATAR_CDN_LINK'         # e.g. 'https://cdn.v2ex.com/gravatar/'
+  graphCommentId = "YOUR_GRAPH_COMMENT_ID"  # use graph comment (disqus alternative)
+  math = true                               # enable KaTeX math typesetting globally
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+#  [[menu.main]]
+#    identifier = "contact"
+#    name = "Contact"
+#    url = "/contact/"
+#    weight = 10
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
