@@ -1,17 +1,14 @@
 # Home
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+这是我的知识库。
 
-## Commands
+## 关于我
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+日常很无聊。
+专职软件开发、技术管理。
+业余三天热度连续实践者。
 
-## Project layout
+---
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+> 从未成年就开始思考人生的意义，
+> 而立之年终于得出到答案：人生没有意义，活着就是意义。
