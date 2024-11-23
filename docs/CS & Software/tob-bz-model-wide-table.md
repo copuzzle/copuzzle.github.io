@@ -4,7 +4,7 @@ slug: 'tob-bz-model-wide-table'
 tags: ["ToB"]
 ---
 
-# ToB 业务 | 模型设计之 宽表
+# 模型设计之 宽表
 
 内容。
 

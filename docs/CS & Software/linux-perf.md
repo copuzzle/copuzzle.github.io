@@ -1,4 +1,4 @@
-# Linux System Performance 系统性能
+# Linux 系统性能
 
 ## overview
 ![alt text](media/linux-perf-tool.png)

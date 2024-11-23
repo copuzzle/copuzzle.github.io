@@ -4,7 +4,7 @@ slug: 'tob-bz-model'
 tags: ["ToB"]
 ---
 
-# ToB 业务 | 模型设计
+# 模型设计
 
 This pattern goes by many names, most commonly :
 

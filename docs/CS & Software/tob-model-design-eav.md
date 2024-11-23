@@ -4,7 +4,7 @@ slug: 'tob-bz-model-eav'
 tags: ["ToB"]
 ---
 
-# ToB 业务 | 模型设计之 EAV
+# 模型设计之 EAV
 
 EAV是英文Entity实体、Attribute属性和Value值的首字母缩写。
 
