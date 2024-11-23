@@ -37,16 +37,18 @@ extra:
 
 nav:
   - Home: index.md
-  - 硬件电子:
+  - EE:
     - DIY:
-      - 硬件电子/diy-做一盏灯.md
+      - EE/diy-做一盏灯.md
 
-  - ToB业务:
-    - ToB业务/tob-model-design.md
-    - ToB业务/tob-bz-model-wide-table.md
-    - ToB业务/tob-model-design-eav.md
+  - CS & Software:
+    - ToB 业务设计
+    - CS & Software/tob-model-design.md
+    - CS & Software/tob-bz-model-wide-table.md
+    - CS & Software/tob-model-design-eav.md
   
   - 生活记录:
-    - 记忆回溯:
+    - 闯入记忆:
+      - 生活记录/面对旷野.md
       - 生活记录/旷日持久的咳.md
      
