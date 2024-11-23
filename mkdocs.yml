@@ -1,0 +1,52 @@
+site_name: 无聊的牛顿
+# site_url: https://mydomain.org/mysite
+theme:
+  name: material
+  favicon: assets/favicon.ico
+
+  features:
+    - content.code.copy
+    - navigation.tabs
+    - navigation.sections
+    - navigation.tracking
+    - navigation.path
+    - navigation.prune
+    # - navigation.footer
+    - toc.follow
+    - toc.integrate
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: white
+      # primary: light green
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra:
+  analytics:
+    provider: google
+    property: G-YNE1Q958KY
+
+nav:
+  - Home: index.md
+  - 硬件电子:
+    - DIY:
+      - 硬件电子/diy-做一盏灯.md
+
+  - ToB业务:
+    - ToB业务/tob-model-design.md
+    - ToB业务/tob-bz-model-wide-table.md
+    - ToB业务/tob-model-design-eav.md
+  
+  - 生活记录:
+    - 记忆回溯:
+      - 生活记录/旷日持久的咳.md
+     
