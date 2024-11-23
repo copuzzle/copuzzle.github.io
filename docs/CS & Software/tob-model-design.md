@@ -1,13 +1,11 @@
+---
+date: 2023-11-22T22:22:36+08:00
+slug: 'tob-bz-model'
+tags: ["ToB"]
+---
+
 # ToB 业务 | 模型设计
 
-+++
-title = 'ToB 业务 | 模型设计'
-date = 2023-11-22T22:22:36+08:00
-slug = 'tob-bz-model'
-draft = false
-tags = ["ToB"]
-
-+++
 This pattern goes by many names, most commonly :
 
 - EAV – Entity-Attribute-Value

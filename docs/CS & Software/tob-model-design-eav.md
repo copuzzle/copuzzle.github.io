@@ -1,13 +1,10 @@
-# ToB 业务 | 模型设计之 EAV'
+---
+date: 2023-11-22T14:36:36+08:00
+slug: 'tob-bz-model-eav'
+tags: ["ToB"]
+---
 
-+++
-title = 'ToB 业务 | 模型设计之 EAV'
-date = 2023-11-22T14:36:36+08:00
-slug = 'tob-bz-model-eav'
-draft = false
-tags = ["ToB"]
-
-+++
+# ToB 业务 | 模型设计之 EAV
 
 EAV是英文Entity实体、Attribute属性和Value值的首字母缩写。
 

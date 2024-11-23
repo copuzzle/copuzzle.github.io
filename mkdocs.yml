@@ -13,7 +13,7 @@ theme:
     - navigation.prune
     # - navigation.footer
     - toc.follow
-    - toc.integrate
+    - navigation.top
 
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -42,10 +42,16 @@ nav:
       - EE/diy-做一盏灯.md
 
   - CS & Software:
-    - ToB 业务设计
-    - CS & Software/tob-model-design.md
-    - CS & Software/tob-bz-model-wide-table.md
-    - CS & Software/tob-model-design-eav.md
+    - Linux:
+      - CS & Software/systemd.md
+      - CS & Software/linux-perf.md
+      - CS & Software/tmux.md
+    - CS:
+      - CS & Software/bnf.md
+    - ToB 业务设计:
+      - CS & Software/tob-model-design.md
+      - CS & Software/tob-bz-model-wide-table.md
+      - CS & Software/tob-model-design-eav.md
   
   - 生活记录:
     - 闯入记忆:
