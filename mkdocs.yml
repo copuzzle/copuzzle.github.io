@@ -1,8 +1,11 @@
-site_name: 无聊的牛顿
+site_name: 无聊小明
 # site_url: https://mydomain.org/mysite
 theme:
   name: material
   favicon: assets/favicon.ico
+  icon:
+    logo: material/rocket-outline
+    # logo: material/rocket-launch
 
   features:
     - content.code.copy
