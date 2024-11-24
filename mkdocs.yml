@@ -37,9 +37,6 @@ extra:
 
 nav:
   - Home: index.md
-  - EE:
-    - DIY:
-      - EE/diy-做一盏灯.md
 
   - CS & Software:
     - Linux:
@@ -52,9 +49,14 @@ nav:
       - CS & Software/tob-model-design.md
       - CS & Software/tob-bz-model-wide-table.md
       - CS & Software/tob-model-design-eav.md
+
+  - EE:
+    - DIY:
+      - EE/diy-做一盏灯.md
+      - EE/diy-laptop-external-switch.md
   
-  - 生活记录:
-    - 思&想碎片:
-      - 生活记录/面对旷野.md
-      - 生活记录/旷日持久的咳.md
+  # - Life:
+    # - 思&想碎片:
+      # - 生活记录/面对旷野.md
+      # - 生活记录/旷日持久的咳.md
      
