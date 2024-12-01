@@ -12,7 +12,7 @@ tags:
 型号是 E480 , 刚好有一个锁孔，开关就放在这个位置。
 
 ![alt text](https://i.imgur.com/DPM8rQ0_d.webp?maxwidth%3D1520%26fidelity%3Dgrand)
-
+<!-- more -->
 经测试，开关按下时， 线路闭合到 GND , 也就是拉底电平，那么在 `sw1` 的位置上方引脚加一根导线，另一个随便找一个方便接的 GND 就可以了。
 
 另外因为是贴片开关，要小心操作。
