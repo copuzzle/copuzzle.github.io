@@ -1,5 +1,5 @@
 ---
-date: 2024-11-27
+date: 2024-11-19
 categories:
   - diy
 tags:
@@ -24,6 +24,7 @@ tags:
 ![alt text](https://i.imgur.com/8iUXs52_d.webp?maxwidth%3D1520%26fidelity%3Dgrand)
 
 效果就是这样。
+
 ![alt text](https://i.imgur.com/qQnJSzG_d.webp?maxwidth%3D1520%26fidelity%3Dgrand)
 
 最后，给它加一个延长按键，热熔胶棒安排。
