@@ -1,3 +1,13 @@
+---
+draft: false
+date: 2024-12-01
+categories:
+  - diy
+tags:
+  - diy
+slug: make-a-lamp
+pin: true
+--- 
 # 做一盏灯
 
 从小开始时不时脑子就会出现，用身边的东西，做点什么的想法。

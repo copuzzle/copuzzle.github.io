@@ -33,6 +33,15 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 
+plugins:
+  - blog:
+      blog_toc: true
+      pagination_per_page: 5
+      archive_pagination_per_page: 10
+      categories_pagination_per_page: 10
+
+
+
 extra:
   analytics:
     provider: google
@@ -40,7 +49,7 @@ extra:
 
 nav:
   - Home: index.md
-
+  
   - CS & Software:
     - Linux:
       - CS & Software/systemd.md
@@ -52,18 +61,15 @@ nav:
       - CS & Software/tob-model-design.md
       - CS & Software/tob-bz-model-wide-table.md
       - CS & Software/tob-model-design-eav.md
-
-  # - EE:
-  #   - DIY:
-  #     - EE/diy-做一盏灯.md
-  #     - EE/diy-laptop-external-switch.md
+  - Blog:
+    - blog/index.md
   
-  - Life:
-    - 一些事:
-      - Life/typing-practice.md
-    - DIY:
-      - Life/diy-做一盏灯.md
-      - Life/diy-laptop-external-switch.md
+  # - Life:
+  #   - 一些事:
+  #     - Life/typing-practice.md
+  #   - DIY:
+  #     - Life/diy-做一盏灯.md
+  #     - Life/diy-laptop-external-switch.md
     # - 思&想碎片:
       # - 生活记录/面对旷野.md
       # - 生活记录/旷日持久的咳.md
