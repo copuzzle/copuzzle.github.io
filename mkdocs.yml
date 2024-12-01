@@ -53,12 +53,17 @@ nav:
       - CS & Software/tob-bz-model-wide-table.md
       - CS & Software/tob-model-design-eav.md
 
-  - EE:
-    - DIY:
-      - EE/diy-做一盏灯.md
-      - EE/diy-laptop-external-switch.md
+  # - EE:
+  #   - DIY:
+  #     - EE/diy-做一盏灯.md
+  #     - EE/diy-laptop-external-switch.md
   
-  # - Life:
+  - Life:
+    - 一些事:
+      - Life/typing-practice.md
+    - DIY:
+      - Life/diy-做一盏灯.md
+      - Life/diy-laptop-external-switch.md
     # - 思&想碎片:
       # - 生活记录/面对旷野.md
       # - 生活记录/旷日持久的咳.md
