@@ -1,5 +1,5 @@
 ---
-date: 2024-12-10
+date: 2024-12-27
 categories:
   - diy
 tags:
@@ -33,8 +33,9 @@ tags:
 找了一圈，没有 2020 的挂钩，自己 diy 打印几个。
 ![alt text](media/WechatIMG222.jpeg)
 
-## 成品
+## 成品与造价
 达成了原设想的效果，厨房有这个之后，整洁和宽敞了不少，成品看起来也不 low 。
 ![alt text](media/WechatIMG221.jpeg)
 
-
+造价如下，不便宜。
+![alt text](media/WechatIMG231.jpeg)

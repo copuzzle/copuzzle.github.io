@@ -78,3 +78,4 @@ tags:
 
 ## 附录
 [常用300字 & 难拆字 集合](world-collection.md)
+[五笔规则](wubi-sheet.md)
