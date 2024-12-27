@@ -1,5 +1,4 @@
 ---
-draft: true
 date: 2024-12-10
 categories:
   - diy
@@ -21,21 +20,20 @@ tags:
 
 不管是铝型材和木板的尺寸切割都是要加钱的，也是感觉可以省一些成本，自己有一个小电磨机，我感觉自己可以 diy 一个切割机，把木板的部分搞定。
 后面证明有可性有，但不多，完成了切割，但整个切割花了一天的工时。手磨锯的扭力太小的，一条线要切两面，一个面还需要分两个深度，就算是这样，还会经常卡锯片，在地上操作也很不方便。
-![[WechatIMG223.jpeg]]
+![alt text](media/WechatIMG223.jpeg)
 
 木板虽然是很便宜的桐木，但为了体验防腐，买了水性漆做防护。
-![[WechatIMG224.jpeg]]
+![alt text](media/WechatIMG224.jpeg)
 
 其他的就是装框架和抽屉滑轨的一些工作。
-
-![[WechatIMG226.jpeg]]
+![alt text](media/WechatIMG226.jpeg)
 
 ## 挂钩
 找了一圈，没有 2020 的挂钩，自己 diy 打印几个。
-![[WechatIMG222.jpeg]]
+![alt text](media/WechatIMG222.jpeg)
 
 ## 成品
 达成了原设想的效果，厨房有这个之后，整洁和宽敞了不少，成品看起来也不 low 。
-![[WechatIMG221.jpeg]]
+![alt text](media/WechatIMG221.jpeg)
 
 
