@@ -61,9 +61,10 @@ nav:
     - CS:
       - CS & Software/bnf.md
     - 企业应用设计:
-      - CS & Software/tob-model-design.md
-      - CS & Software/tob-bz-model-wide-table.md
-      - CS & Software/tob-model-design-eav.md
+      - CS & Software/ea-index.md
+      - CS & Software/ea-model-design.md
+      - CS & Software/ea-model-wide-table.md
+      - CS & Software/ea-model-design-eav.md
   - Other:
     - 家居:
       - other/铝型材.md

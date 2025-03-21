@@ -1,7 +1,7 @@
 ---
 date: 2023-11-22T22:22:36+08:00
-slug: 'tob-bz-model'
-tags: ["ToB"]
+slug: 'ea-bz-model'
+tags: ["EA"]
 ---
 
 # 模型设计
