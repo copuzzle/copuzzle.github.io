@@ -60,7 +60,7 @@ nav:
       - CS & Software/tmux.md
     - CS:
       - CS & Software/bnf.md
-    - ToB 业务设计:
+    - 企业应用设计:
       - CS & Software/tob-model-design.md
       - CS & Software/tob-bz-model-wide-table.md
       - CS & Software/tob-model-design-eav.md
