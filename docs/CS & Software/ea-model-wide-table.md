@@ -4,7 +4,7 @@ slug: 'ea-bz-model-wide-table'
 tags: ["EA"]
 ---
 
-# 模型设计之 宽表
+# 数据模型设计之宽表
 
 内容。
 
