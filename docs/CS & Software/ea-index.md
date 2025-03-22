@@ -22,14 +22,15 @@ tags: ["EA"]
 
 ### 数据模型
  [数据模型之 EAV ｜ 灵活自由，快速地构建业务的属性存储 ](ea-model-design-eav.md)
+ 
+ [ 数据模型之大宽表 ｜ 宽表就不能有灵活性和性能了吗](ea-model-wide-table.md)
 
 
 ### 业务的关系
 
 ### 权限体系
-
 [ ABAC ](#)
-
+[salesforce 的 record sharing rules](ea-data-access.md)
 
 ### 身份的抽象
 

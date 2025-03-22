@@ -70,7 +70,7 @@ EAV（Entity-Attribute-Value，实体-属性-值）模型是一种灵活的数�
 可能大部分的技术的文章来讲讲到这里就结束了，而且动态的属性是不是不能参与过滤？难道要加一个属性，且可以过滤就要修改 entity 的表结构吗？把一个属性变成可筛选，就得迁移数据？
 我们的目标要构建中大型的企业应用的，所以我们继续。
 
-## 3. 进阶，EAV 的企业级实践
+## 3. 进阶，jira 的企业级实践
 先思考几个问题：
 
 1. entity_value 表如何结合实体表和其他表做复杂查询
@@ -95,7 +95,7 @@ EAV（Entity-Attribute-Value，实体-属性-值）模型是一种灵活的数�
 |5	|2|birthday| | ||1993-02-03| 
 |5	|2| age | | 23 ||| 
 
-我们先来分析一下这个的表达结构， string 是 varchat 变长的, number 是 bigint, 有一定的空间浪费，text 数似 varchat 大文本时记录外存储，date 是个数字和 number 类似。
+我们先来分析一下这个的表达结构， string 是 varchar 变长用来存储短文本,；number 是 float可以同时兼容几种数字类型, 有一定的空间浪费； text 数似 varchar 大文本时记录外存储，date 其实用 number 实现是可以的，但日期作为系统的热门类型，独立出来有现实意义。
 
 相应地，我们需要改进 fields 的存储，因为读不同的属性值行为差异化了，所以需要给它增加一个 type 字段，用来区分读数据和转换数据行为。
 考虑到管理属性的便捷性，还有 entity 表的独立，都让我们不得不把 fields 独立存储，属性作为元信息，数据量也相对少，把所有实体的自定义属性 field 一起存储。
@@ -109,7 +109,9 @@ EAV（Entity-Attribute-Value，实体-属性-值）模型是一种灵活的数�
 |5| customer | age | 年龄 | int |
 
 做到这个程度，我们回顾刚刚的问题，1, 2，3 点某种程度解决了，但好像没有完全解决，好像写 sql 比较难。
-其实使用这类方案已经不适于用手写 SQL 的方式去查询数据，我们的实践是，上层的条件传下来，dao 层需要结合 custom_field 的元信息，经过一层数据类型的判断，然后再生成相应的 SQL。
+其实使用这类方案已经不适于用手写 SQL 的方式去查询数据，正确的实践是，上层的条件传下来，dao 层需要结合 custom_field 的元信息，经过一层数据类型的判断，然后再生成相应的 SQL。
+
+以上的这个方法的实践，目前 jira 可以作为一个成功案例。其实从 jira 的表结构的设计里，可以学习到很多东西，后面我们还会针对它还聊聊其它业务的设计。
 
 > [!NOTE] 工程化
 > 通常来讲，一个企业级的应用，我们描述好实体后，实体的 dao 数据访问层和代码的数据结构应该由工具生成，如果不是那代表着可能应该就这方面去做抽象，或者就算是实体较少，还没有工具化，那么 model 层的代码也行为也是应该一致的。
@@ -119,5 +121,6 @@ EAV模型如同一把双刃剑：它为动态业务提供了无限可能，却�
 
 ref: 
 [Wordpress and the Curse of EAV](https://www.antradar.com/blog-wordpress-and-the-curse-of-eav)
+[Modelling dynamic attributes - Blueprints for the Entity-attribute-value model](https://database-modelling.com/article/modelling-dynamic-attributes-blueprints-for-the-entity-attribute-value-model-eav)
 
 
