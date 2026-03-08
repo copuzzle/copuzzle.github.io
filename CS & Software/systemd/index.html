@@ -1,0 +1,1388 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../linux-perf/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Systemd 使用简介 - 无聊小明</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#systemd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="无聊小明" class="md-header__button md-logo" aria-label="无聊小明" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2S7 4 7 12c0 3.1.76 5.75 1.67 7.83A2 2 0 0 0 10.5 21h3a2 2 0 0 0 1.83-1.17C16.25 17.75 17 15.1 17 12c0-8-5-10-5-10m1.5 17h-3c-1-2.24-1.5-4.59-1.5-7 0-4.64 1.9-6.8 3-7.67 1.1.87 3 3.03 3 7.67 0 2.41-.5 4.76-1.5 7m6.5 3-3.86-1.55c.7-1.53 1.2-3.11 1.51-4.72m-9.79 4.72L4 22l2.35-6.27c.31 1.61.81 3.19 1.51 4.72M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            无聊小明
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Systemd 使用简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  CS & Software
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../other/%E9%93%9D%E5%9E%8B%E6%9D%90/" class="md-tabs__link">
+          
+  
+  
+  Other
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
+          
+  
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="无聊小明" class="md-nav__button md-logo" aria-label="无聊小明" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2S7 4 7 12c0 3.1.76 5.75 1.67 7.83A2 2 0 0 0 10.5 21h3a2 2 0 0 0 1.83-1.17C16.25 17.75 17 15.1 17 12c0-8-5-10-5-10m1.5 17h-3c-1-2.24-1.5-4.59-1.5-7 0-4.64 1.9-6.8 3-7.67 1.1.87 3 3.03 3 7.67 0 2.41-.5 4.76-1.5 7m6.5 3-3.86-1.55c.7-1.53 1.2-3.11 1.51-4.72m-9.79 4.72L4 22l2.35-6.27c.31 1.61.81 3.19 1.51 4.72M12 12c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2"/></svg>
+
+    </a>
+    无聊小明
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CS & Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CS & Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemd 使用简介
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Systemd 使用简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.简介
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.用户服务管理进程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.systemd 用户实例的配置
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux-perf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux 系统性能
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tmux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    tmux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bnf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BNF 范式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    企业应用设计
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    企业应用设计
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ea-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    企业级应用的实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ea-model-design-eav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型之 EAV ｜ 灵活、快速地构建业务的属性存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ea-model-wide-table/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据模型之大宽表 ｜ 宽表就不能有灵活性和性能了吗
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    
+  
+  
+  
+    <a href="../../other/%E9%93%9D%E5%9E%8B%E6%9D%90/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../blog/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Blog
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.简介
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.用户服务管理进程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.systemd 用户实例的配置
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    CS & Software
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="./" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Linux
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="systemd">Systemd 使用简介</h1>
+<h2 id="1">1.简介</h2>
+<p>Systemd 是 linux 上新一代的系统和服务管理软件。它的优缺点如下。 </p>
+<p>优点： </p>
+<ul>
+<li>用描述性的 DSL 替代传统的 rc 系统的脚本，启动速度快</li>
+<li>多种功能更集成化</li>
+<li>使用 cgroup 来管理进程(组)，避免了传统 rc 系统的父进程非正常退出时其子进程失控的问题</li>
+<li>内建 journal 功能</li>
+</ul>
+<p>缺点（见仁见智）： </p>
+<ul>
+<li>多种功能的紧密集成，破坏了组件可替换的 Unix 传统</li>
+<li>集成了过多的功能</li>
+<li>二进制 journal 文件损坏后，处理相对麻烦</li>
+</ul>
+<p>systemd 由以下几个部分构成（路径随版本会有差异） </p>
+<p>组件或功能 
+说明 
+/sbin/init 
+符号链接到 /lib/systemd/systemd，系统的 pid=1 进程，是最重要的组件功能 
+/lib/systemd/systemd-journald 
+处理 journal (即 log)。需要注意的是，它会接受 syslog 
+/lib/systemd/systemd-udevd 
+代替原本的 udevd。它监听内核消息，执行 udev 规则来处理设备文件 
+/lib/systemd/systemd-logind 
+处理用户登录、会话，支持 multi-seat 功能。例如 X 登录及控制台登录 
+/lib/systemd/systemd --user
+systemd 用户实例，用户服务管理进程。这是本文档要描述的核心部分，也是我们将使用的主要功能 </p>
+<h2 id="2">2.用户服务管理进程</h2>
+<p>用户服务管理进程是管理用户的服务进程的进程。以传统的 rc 系统为例，简要描述功能和优缺点 </p>
+<p>sysvinit </p>
+<ul>
+<li>/sbin/init 进程启动后，会读取 /etc/inittab，根据规则直接管理一些进程。这些进程退出后，其对应程序会被重新运行(respawn)</li>
+<li>根据一些特殊规则，init 会响应一些事件，例如键盘组合键</li>
+<li>init 有状态 (runlevel)，init 会在不同 runlevel 执行指定的脚本 (/etc/rcN.d)，实际上会派生很多服务进程</li>
+<li>通过 runlevel 脚本启动的服务，init 不直接管理，服务进程异常退出不会 respawn</li>
+</ul>
+<p>daemontools </p>
+<ul>
+<li>daemontools  对 sysvinit 进行补充。它的主进程 svscan 可以从 inittab 中由 init 启动并直接管理，也可以由 runlevel 脚本启动，需要注意的是，runlevel 脚本启动的 svscan 退出后不会重新运行</li>
+<li>svscan 扫描指定的目录下的子目录(通常是 /etc/service/<subdir> )，每个子目录启动一个 supervise 进程，这个进程会监控子目录，执行子目录下的 run 脚本</li>
+<li>supervise 使用 wait() 系统调用，在子进程退出后 respawn。所以 run 脚本最后要用 exec 执行程序，执行的程序不能 daemon 化</li>
+<li>supervise 使用该子目录下的特别文件来与 svscan 、命令行工具 svc交互</li>
+<li>supervise 被杀死后，其管理的子进程会失控</li>
+<li>svscan 和 supervise 是弱耦合的，svscan 被杀死不影响 supervise，可以重新启动 svscan，这是优势，也是劣势</li>
+<li>svstat 这个状态查看工具，没有内建的列出服务的功能，需要用一些 unix 工具从文件系统上查，容易出错</li>
+<li>由于 supervise 会在子目录中创建一些文件，在一些情况管理操作中是“不干净的”，处理较复杂</li>
+<li>适合保持那些无状态的或者幂等的服务，对于有状态或非幂等的服务，daemontools 并不适合</li>
+</ul>
+<h2 id="3systemd">3.systemd 用户实例的配置</h2>
+<p>通常，用户的第一个会话创建时，由 /lib/systemd/systemd-logind 启动 /lib/systemd/systemd --user；最后一个会话结束后，/lib/systemd/systemd --user 进程退出。如果想让 /lib/systemd/systemd --user 在系统启动时启动，之后持续运行，很简单 </p>
+<h1 id="loginctl-enable-linger-user1-user2">loginctl enable-linger user1 [user2 ...]</h1>
+<p>例如</p>
+<h1 id="loginctl-enable-linger-root-tiger">loginctl enable-linger root tiger</h1>
+<p>但是，systemd 用户实例的默认设置往往不够，无法达成一些特殊要求，例如 </p>
+<ul>
+<li>被杀死后自动重启</li>
+<li>调整各种 limit 值，例如可打开的文件描述符数量</li>
+</ul>
+<p>Systemd 用户实例的配置由 /etc/systemd/system 下的 user@ 配置实现，具体而言 </p>
+<ul>
+<li>/etc/systemd/system/user@1000.service.d/*.conf  影响 uid=1000 的用户的 systemd 用户实例</li>
+<li>/etc/systemd/system/user@0.service.d/*.conf 影响 uid=0 即 root 的 systemd 用户实例</li>
+<li>/etc/systemd/system/user@.service.d/*.conf 影响所有用户的 systemd 用户实例</li>
+</ul>
+<p>如果这些目录 (user@.service.d 等) 不存在，可创建目录。以下举两个例子 </p>
+<pre><code>/etc/systemd/system/user@1000.service.d/always.conf
+</code></pre>
+<p>[Service]
+Restart=always</p>
+<pre><code>/etc/systemd/system/user@1000.service.d/limits.conf
+</code></pre>
+<p>[Service]
+LimitNOFILE=100000</p>
+<p>添加配置后，需要 systemctl daemon-reload </p>
+<p>具体可配置参数可参考 man page (systemd.service 、systemd.resource-control 和 systemd.exec) </p>
+<h2 id="4">4.用户服务的配置</h2>
+<p>如前所述，systemd 用户实例用于启动用户服务。用户服务的配置有以下目录 </p>
+<ul>
+<li>/usr/lib/systemd/user，系统预装软件所需要的用户服务配置</li>
+<li>/etc/systemd/user ，由系统管理员给所有用户添加的服务</li>
+<li>~/.config/systemd/user ，用户自定义的服务</li>
+</ul>
+<p>这里给一个简单的例子 </p>
+<pre><code>~tiger/.config/systemd/user/sleep.service
+</code></pre>
+<p>[Unit]
+Description=a sleep example service
+[Service]
+ExecStart=/bin/sleep 1200
+Restart=always
+[Install]
+WantedBy=default.target</p>
+<p>启用使之生效，然后启动 </p>
+<p>$ systemctl --user enable sleep[.service]
+Created symlink from /home/tiger/.config/systemd/user/default.target.wants/sleep.service to /home/tiger/.config/systemd/user/sleep.service.
+$ systemctl --user start sleep[.service]</p>
+<p>停止和删除一个服务 </p>
+<p>systemctl --user stop sleep[.service]     #停止一个服务
+systemctl --user disable sleep[.service]  #删除一个服务</p>
+<h2 id="5">5.扩展或修改系统随机带的服务的行为（配置）</h2>
+<p>在上面的例子里，我们使用 user@.service.d 中的配置来修改 user.service 的行为。 </p>
+<p>如果要扩展或修改随系统安装的服务的行为（配置），不应该直接修改系统配置，而是创建一个以服务的配置文件名后追加 .d 的目录，然后在这个目录下创建任意以 .conf 为后缀的配置文件，指定你需要增加或修改的选项。 </p>
+<p>你需要用 systemctl daemon-reload 让修改生效，然后重启服务。 </p>
+<p>见 http://www.freedesktop.org/software/systemd/man/systemd.unit.html </p>
+<h2 id="6systemd">6.Systemd的问题</h2>
+<p>Systemd 管理进程默认是通过 cgroup。当 systemd --user 用户实例被杀掉（本身很稳定，只能是误操作或特意如此）时，其启动的服务进程都将被杀掉。这和 daemontools 的行为不一样。 </p>
+<p>daemontools 是 svscan 启动 supervise，由 supervise 启动服务。当杀死 svscan 后，supervise 不受影响，服务不受影响。 </p>
+<p>systemd --user 的配置中，可以指定 KillMode 来修改行为。KillMode 是 systemctl stop <service> 的行为。KillMode 的值如下 </p>
+<p>KillMode 
+行为 
+control-group 
+同一 cgroup 的所有进程会被 kill 
+process 
+仅此进程被杀死 
+mixed 
+此进程被 SIGTERM，同 cgroup 的其它进程被 SIGKILL 
+none 
+任何进程不会被杀 </p>
+<p>但 --user 用户实例只能使用 control-group 和 mixed 两种模式。 </p>
+<p>当 systemd --user 用户实例以 Restart=always 启动后，直接 kill 它的操作会使得它管理的处于 enabled 状态的所有服务重启（即使该服务没有指定 Restart=always，没有处于运行状态)。 </p>
+<h2 id="7">7.其它配置问题</h2>
+<h3 id="71-su-username-systemctl-user">7.1  su - username 无法执行 systemctl --user 命令</h3>
+<p>systemctl --user enable some.service 这样的命令，连接到 systemd --user 所监听的 unix socket 上进行通信，而这个 unix socket 的位置是由 XDG_RUNTIME_DIR 环境变量决定的。 </p>
+<p>正常 ssh 登录，这个环境变量会正确设置。而 su - username 不会。这一个 systemd 的 feature/bug </p>
+<p>（见 https://bugs.freedesktop.org/show_bug.cgi?id=70810 和 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=724731#250 ) </p>
+<p>临时解决办法是 </p>
+<p>1</p>
+<pre><code>export XDG_RUNTIME_DIR=/run/user/$(id -u)
+</code></pre>
+<p>然后执行 systemd 相关命令 </p>
+<h3 id="72-restartalways">7.2  Restart=always 不生效</h3>
+<p>问题：即使设置了 Restart=always，有时候服务还是不能重启。 </p>
+<p>为了防止过于快速的重启对系统造成压力，重启有一个默认的间隔 RestartSec；另外还有一个隐含的检查，如果在 10s 中有多于 5 次重启，则触发 start limit，不能再自动重启（可以/必须手工重启）。如果服务进程的代码或者配置问题造成无法重启，通常会触发 10s 5次的限制。（参考 man systemd.unit 的 StartLimitInterval，以及 man systemd.service 的 RestartSec ） </p>
+<p>比较好的解决的办法是设置 RestartSec=2 或以上。 </p>
+<p>[Service]
+Restart=always
+RestartSec=2s500ms</p>
+<p>man systemd.time 可查看指定时间的方式 </p>
+<p>另外一种情况是用 sysv 脚本启动的服务，默认为 RemainAfterExit=yes，即进程退出也是正常状态，不会触发 restart。解决方法 </p>
+<p>[Service]
+Restart=always
+RestartSec=2s500ms
+RemainAfterExit=no
+PIDFile=/path/to/pidfile</p>
+<h3 id="73-enable">7.3  Enable 失败</h3>
+<p>systemctl enable 需要 service 文件中包含 [Install] 声明。 </p>
+<p>错误信息对应的问题 </p>
+<p>错误信息 
+问题 
+解决办法 
+Failed to execute operation: No such file or directory 
+    1. 在正常的搜索目录下不存在指定的 service 文件
+    2. 存在 service 文件，它是一个符号链接，且链接层次太多导致被判断不存在 (ELOOP)
+    3. root下enable非/lib/systemd/ 下的服务，重启后会有这个问题。需要将root下的服务（进程1拉起的服务放到 /lib/systemd/system/ 下）
+无需将部署目录的 service 文件链接至 ~/.config/systemd/user 下，直接 enable 部署目录的 service 文件 </p>
+<h3 id="74">7.4  可实例化服务(服务模板)</h3>
+<p>在一些时候，我们需要起多个相同的服务，只是运行参数不同。systemd 提供了可实例化的服务模板机制。其实在前述 2 章节中的 user@.service 就是模板服务。 </p>
+<p>可实例化的服务是定义一个  name@.service，然后 enable 或 start 时指定一个实例名称，形如 name@instance.service， 这个实例名称可以作为参数传递给服务定义，以下是一个例子 </p>
+<pre><code>example@.service
+</code></pre>
+<p>[Unit]
+Description=Example Instanced service, sleep %I seconds
+After=network.target</p>
+<p>[Service]
+ExecStart=/bin/sleep %I</p>
+<p>使用 </p>
+<p>启动一个 sleep 10000 秒的实例（不一定持久化）</p>
+<h1 id="systemctl-start-example10000service">systemctl start example@10000.service</h1>
+<p>生成一个 1000 秒的实例对应的符号链接（持久化），但不启动</p>
+<h1 id="systemctl-enable-example1000service">systemctl enable example@1000.service</h1>
+<p>服务定义中，可以用 %i (instance name) 或者 %I ( unescaped instance name) 来获取 name@ 和 .service 之间的实例名称。具体可参考 man systemd.unit。 </p>
+<p>需要注意的一点是，如果命令行上指定的 instance name 含有“ - ”字符，用 %I 时会把“-” 字符替换为 “/” 字符，此种情况应该用 %i。 </p>
+<p>另外，可实例化服务的 .d 配置目录是先  name@instance.service.d 然后 name@.service.d ，即先实例然后模板。 </p>
+<p>服务模板的细节可参考 man systemd.unit </p>
+<h3 id="75-sigkill">7.5  服务不能优雅退出，被强行杀死(SIGKILL)</h3>
+<p>服务stop（或者是restart），起始systemd会尝试用SIGTERM来让服务自己优雅退出，如果超时（默认90s）之后，服务仍未退出，那么他就会用SIGKILL杀死服务。可以配置Service段的TimeoutStopSec来延长时间，或者把这个值设置成0（不推荐）来禁止timeout，即永不超时。 </p>
+<h3 id="76-stdout-stderr">7.6  服务的 stdout 和 stderr</h3>
+<p>见 man systemd.exec 的 StandardOutput= 和 StandardError= </p>
+<p>例如，将 stderr 丢弃 </p>
+<p>[Service]
+StandardError=null</p>
+<p>使用其它选项前应仔细看文档。 </p>
+<h3 id="77-unit">7.7  删除有问题的unit服务</h3>
+<p>使用 systemctl reset-failed 命令来清理有问题的unit，systemd 并没有提供直接删除某个 unit 的功能。 </p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tabs", "navigation.sections", "navigation.tracking", "navigation.path", "navigation.prune", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
